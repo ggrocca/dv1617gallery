@@ -1,0 +1,92 @@
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Italian job market</title>
+        <link rel="stylesheet" href="styles.css?version=1">
+        <script type="text/javascript" src="d3/d3.js"></script>
+        <script type="text/javascript" src="d3/d3-selection-multi.js"></script>
+        <script type="text/javascript" src="d3/topojson.js"></script>
+    </head>
+
+    <body>
+        <header>
+                <h1 class="title">The italian job market</h1>
+                <div>Names: Cincotta Valentina, Anfigeno Alessandro</div>
+        </header>
+
+        <div id="map-view" class="viewItaly">
+            <h2 class="title">Italy</h2>
+            <div id="plot-selector">
+                <label>Options:</label>
+                <select id="yearSelection" onchange="chooseDataItalyMarket(this.options[this.selectedIndex].value)">
+                    <option selected value="2013">2013</option>
+                    <option value="2014">2014</option>
+                    <option value="2015">2015</option>
+                    <option value="2016">2016</option>
+                </select>
+                <select id="workSelection" onchange="chooseDataItalyMarket(this.options[this.selectedIndex].value)">
+                    <option selected value="avv_per_lav">Activated jobs per worker</option>
+                    <option value="ces_per_lav">Deactivated jobs per worker</option>
+                    <option value="lav_att">Activated jobs</option>
+                    <option value="lav_ces">Deactivated jobs</option>
+                </select>
+            </div>
+
+            <svg id="svgMap" width="1000" height="700">
+                <g id="map"></g>
+                <g id="legend">
+                    <defs>
+                      <linearGradient id="MyGradient" gradientTransform ="rotate(90)">
+                        <stop offset="0%" stop-color="blue" />
+                        <stop offset="100%" stop-color="aqua" />
+                      </linearGradient>
+                    </defs>
+                    <rect id="rectlegend" class="rectlegend" width="19" height="300" x="850" y="200"/>
+                    <text id="rectlegend_min" x="840" y="490" font-size="16px"></text>
+                    <text id="rectlegend_mid" x="840" y="340" font-size="16px"></text>
+                    <text id="rectlegend_max" x="840" y="207" font-size="16px">High</text>
+                  </g>
+            </svg>
+        </div>
+
+        <div id="line-chart-italy" class="viewItaly">
+            <h2 class="title">Line Chart</h2>
+            <svg width="620" height="728" id="lineChart" >
+                <g id="xAxis"></g>
+                <g id="yAxis"></g>
+                <g id="line" class = "lines"></g>
+            </svg>
+            <text class = "nb"></text>
+        </div>
+
+        <div id="bar-chart-italy" class="view">
+            <h2 class="title"></h2>
+            <br>
+            <svg width="620" height="500" id="barChartItaly">
+                <g id="xAxis"></g>
+                <g id="yAxis"></g>
+                <g id="bars">
+                    <g id="rects"></g>
+                </g>
+                <g id="legend"></g>
+            </svg>
+        </div>
+
+        <div id = "pie-chart-italy" >
+            <h2 class="title"></h2>
+            <svg width="290" height="290" id="pieChart" >
+                <g id="pie" ></g>
+                <g id="pieLegend"></g>
+            </svg>
+        </div>
+
+        <script type="application/javascript" src="italy_market.js?version=1"></script>
+        <script type="application/javascript" src="jobs_act.js?version=1"></script>
+        <script type="application/javascript" src="pieChart.js?version=1"></script>
+        <script type="application/javascript" src="lineChart.js?version=1"></script>
+        <script type="application/javascript" src="barChart.js?version=1"></script>
+        <script type="application/javascript" src="map.js?version=1"></script>
+
+
+    </body>
+</html>

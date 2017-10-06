@@ -1,0 +1,222 @@
+svg {
+    background-color: white;
+}
+
+h1 {
+    color: rgb(115, 115, 115);
+    font-size: 40px;
+    font-weight: bold;
+    margin: 0;
+    text-align:center;
+    padding-bottom: 10px;
+    
+}
+
+#searchBar {
+    width: 160px;
+    font-size: 16px;
+    padding: 5px 0px 5px 0px;
+    text-align:center;
+}
+
+#myUL {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+#myUL li a {
+    border: 1px solid #ddd; /* Add a border to all links */
+    margin-top: -1px; /* Prevent double borders */
+    background-color: #f6f6f6; /* Grey background color */
+    padding: 5px; /* Add some padding */
+    text-decoration: none; /* Remove default text underline */
+    font-size: 16px; /* Increase the font-size */
+    color: black; /* Add a black text color */
+    display: block; /* Make it into a block element to fill the whole list */
+}
+
+#myUL li a:hover {
+    background-color: #eee; /* Add a hover effect to all links, except for headers */
+}
+
+#checkDiv {
+    position:relative;
+    top: 10px;
+    left:0px;
+}
+
+#float-button-group {
+    margin: auto;
+    width:250px;
+    height:15px;
+}
+
+label {
+    display: block;
+    text-align:center;
+}
+
+.zoom_button {
+    float:left;
+    border-radius: 12px;
+    border: 1px solid green;
+}
+
+select {
+    width:150px;
+    height:25px;
+    border-radius: 12px;
+    border:groove;
+    border-color: black;
+    border-width: 1px;
+    box-shadow: none;
+    background: transparent;
+    
+}
+
+#searchDiv {
+    margin-top:25px;
+    margin-left:10px;
+    padding: 1px 0px 1px 0px;
+    position: absolute;
+    text-align: center;
+    background: whitesmoke;
+    font-size:12px;
+    opacity:0;
+    width:160px;
+
+}
+
+
+.tooltip {
+    position: absolute;
+    text-align: center;
+    padding: 2px;
+    background: whitesmoke;
+    font-size:12px;
+    border-radius: 15px;
+    border: 1px solid black;
+    opacity:0;
+}
+
+.tooltip h3{
+    font-size: 16px;
+    color: red;
+    font-weight:bold;
+    margin:0;
+    padding:0;
+}
+
+.boxsel {
+    padding:2px;
+    float:left;
+    font-size: 20px;
+    height:80px;
+
+}
+
+.boxsel2{
+    height:30px;
+    float:left;
+    padding: 0px 30px 0px 10px;
+}
+
+.checkSel{
+    height:30px;
+    float:right;
+    padding: 0px 30px 0px 10px;
+}
+
+.colorsel{
+    float: left;
+    padding: 0px 5px 0px 5px;
+    width:8px;
+    height:18px;
+    border: 1px solid black;
+    display:none;
+}
+
+#color1 {
+    background-color:red;
+}
+#color2{
+    background-color:yellow;
+}
+
+
+.name{
+    float: left;
+    padding: 0px 5px 0px 5px;
+    height:30px;
+    display:none;
+}
+
+
+#Update {
+    background-color: transparent;
+    width:150px;
+    height:25px;
+    border-radius: 12px;
+    border:groove;
+    border-color: black;
+    box-shadow: none;
+    border-width: 1px;
+    position:relative;
+    top:30%;
+}
+
+#selection {
+    margin: auto;
+    direction:ltr;
+    padding: 20px;
+    width:1100px;
+    background-color: none;
+    float: none;
+}
+
+#visualization {
+    margin: auto;
+    padding: 00px;
+    width:1405px;
+    background-color: none;
+    float: none;
+}
+
+.container{
+    float:right;}
+
+
+body {
+    font-family: disney;
+}
+
+@font-face {
+    font-family: 'disney';
+    src: url('data/disney/Disney_Junior_Regular_V2_Regular.ttf');
+}
+
+@media only screen
+and (max-width : 1404px) {
+    #visualization {
+        margin: auto;
+        padding: 00px;
+        width:750px;
+        background-color: none;
+        float: none;
+    }
+}
+
+/* Large screens ----------- */
+@media only screen
+and (min-width : 1405px) {
+    #visualization {
+        margin: auto;
+        padding: 00px;
+        width:1405px;
+        background-color: none;
+        float: none;
+    }
+}
+
+

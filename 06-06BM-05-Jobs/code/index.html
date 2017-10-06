@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Progetto Marazza Barelli - Italian Job Market</title>
+    <script type="text/javascript" src="d3/d3.js"></script>
+    <script type="text/javascript" src="d3/topojson.js"></script>
+    <script src="https://d3js.org/d3-color.v1.min.js"></script>
+    <script src="https://d3js.org/d3-interpolate.v1.min.js"></script>
+    <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-legend/2.24.0/d3-legend.js"></script>
+    <script src="http://d3js.org/colorbrewer.v1.min.js"></script>
+    <link rel="stylesheet" href="styles.css?version=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+
+                <div class="form-group">
+                  
+				<form onload="readDataFromSelectors()" onchange="readDataFromSelectors()" >
+				<label class="radio-inline"> <input type="radio" name="yearSelector" value="14"> 2014<br> </label>
+				<label class="radio-inline"> <input type="radio" checked="checked" name="yearSelector" value="15"> 2015<br> </label>
+				<label class="radio-inline"> <input type="radio" name="yearSelector" value="16"> 2016 <br> </label>
+				</form>
+				</div>
+			<div class="form-group">
+                    
+				
+				<label class="radio-inline"> <input type="checkbox" id="normalizationCheckBox" name="normSelector" onchange="readDataFromSelectors()"> Normalizza dati per popolazione <br> </label>
+				
+            </div>
+
+            <div class="form-group">
+                <span>
+                <select id="dataset" onchange="readDataFromSelectors()">
+                 <option value="Cessazioni">Cessazioni</option>
+                 <option selected value="Assunzioni">Assunzioni</option>
+                 <option value="Trasformazioni">Trasformazioni</option>
+				 </select>
+				 </span>
+
+            </div>
+            <svg width="810" height="1000">
+                 <g id="map"></g>
+                 <g id="legend"></g>
+            </svg>
+            </div>
+            <div class="col-md-4">
+
+                <div class="row">
+                    <h3 id="barChartTitle"></h3>
+                    <form onchange="makeNationalView()">
+                        <label class="radio-inline"> <input id="nationalViewCheckbox" type="checkbox" checked="checked" name="nationalSelector" value="0"> Dati nazionali <br> </label>
+                    </form>
+                    <svg width="600" height="600" id="barChart">
+                    <g id="xAxisBar"></g>
+                    <g id="yAxisBar"></g>
+                    <g id="bars"></g>
+                    </svg>
+
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-2">
+
+                <fieldset class="form-group">
+				<form class="form-vertical"  onload="readDataFromSelectorsBottom()" onchange="readDataFromSelectorsBottom()">    <h4>Seleziona un tasso</h4>
+					<div class="form-check">
+					  <label class="form-check-label" id="TassoOcc">
+						<input type="radio" class="form-check-input" name="rate" value="TassoOcc">
+						Occupazione
+					  </label>
+					</div>
+					<div class="form-check">
+					  <label class="form-check-label" id="TassoDis">
+						<input type="radio" checked="checked" class="form-check-input" name="rate" value="TassoDis">
+						Disoccupazione
+					  </label>
+					</div>
+					<div class="form-check">
+					  <label class="form-check-label" id="TassoIn">
+						<input type="radio"  class="form-check-input" name="rate" value="TassoIn">
+						Inattività
+					  </label>
+					</div>
+				</form>
+				</fieldset>
+
+
+                <fieldset class="form-group">
+					<form class="form-vertical" onload="readDataFromSelectorsBottom()" onchange="readDataFromSelectorsBottom()">    <h4>Seleziona un sottogruppo della popolazione</h4>
+						<div class="form-check">
+						  <label class="form-check-label" id="M">
+							<input type="radio" class="form-check-input" name="agegender" value="M">
+							Maschi
+						  </label>
+						</div>
+						<div class="form-check">
+						  <label class="form-check-label" id="F">
+							<input type="radio" class="form-check-input" name="agegender" value="F">
+							Femmine
+						  </label>
+						</div>
+						<div class="form-check">
+						  <label class="form-check-label" id="AAA">
+							<input type="radio" checked="checked" class="form-check-input" name="agegender" value="15_24">
+							15-24
+						  </label>
+						</div>
+						<div class="form-check">
+						  <label class="form-check-label" id="BBB">
+							<input type="radio" class="form-check-input" name="agegender" value="25_34">
+							25-34
+						  </label>
+						</div>
+						<div class="form-check">
+						  <label class="form-check-label" id="CCC">
+							<input type="radio" class="form-check-input" name="agegender" value="35_49">
+							35-49
+						  </label>
+						</div>
+						<div class="form-check">
+						  <label class="form-check-label" id="DDD">
+							<input type="radio" class="form-check-input" name="agegender" value="50_64">
+							50-64
+						  </label>
+						</div>
+					</form>
+				</fieldset>
+			</div>
+            <div class="col-md-10">
+                <h3 id="lineChartTitleBottom"></h3>
+                <svg width="1000" height="600" id="lineChartBottom">
+				<g id="xAxisLineBottom"></g>
+				<g id="yAxisLineBottom"></g>
+				<g id="linesSelectedBottom"></g>
+				<g id="linesGeneralBottom"></g>
+				</svg>
+            </div>
+
+        </div>
+    </div>
+
+    <script type="application/javascript" src="script.js?version=1"></script>
+</body>
+
+</html>

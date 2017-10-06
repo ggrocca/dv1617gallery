@@ -1,0 +1,35 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Journey to the Solar System</title>
+  <meta charset="utf-8" />
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet" type="text/css">
+  <script src="https://d3js.org/d3.v4.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/topojson/1.6.19/topojson.min.js"></script>
+</head>
+
+<script>
+</script>
+
+<body onLoad="onLoadCreate('home')">
+  <div id="menu">
+    <button id="home" class="menubutton" onclick="onLoadCreate('home')">Home</button>
+    <button id="temp" class="menubutton" onclick="onLoadCreate('temp')">Temperature</button>
+    <button id="chem" class="menubutton" onclick="onLoadCreate('chem')">Chemical Composition</button>
+    <button id="size" class="menubutton" onclick="onLoadCreate('size')">Size</button>
+    <button id="dist" class="menubutton" onclick="onLoadCreate('dist')">Distances</button>
+  </div>
+
+  <svg >
+      <g id="planets"></g>
+  </svg>
+
+</body>
+    <script src="js/solarsystemlib.js"></script>
+    <script src="js/home.js"></script>
+    <script src="js/temperatures.js"></script>
+    <script src="js/distances.js"></script>
+    <script src="js/sizes.js"></script>
+    <script src="js/chemicalComposition.js"></script>
+
+</html>

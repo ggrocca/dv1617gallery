@@ -1,0 +1,205 @@
+@font-face {
+    font-family: 'dusha';
+    src: url('assets/dusha.ttf');
+}
+
+@font-face {
+    font-family: 'aller';
+    src: url('assets/aller.ttf');
+}
+
+.viewPies {
+    float: left;
+    width: 290px;
+    margin-right: 20px;
+    padding: 0.5em;
+    margin-bottom: 20px;
+    border-width: 1px;
+    border-color: #d9d9d9;
+    border-style: solid;
+    margin-top: 20px;
+    margin-left: 20px;
+
+}
+
+.view {
+    padding: 0.5em;
+    float: left;
+    width: 620px;
+    margin: 20px;
+
+}
+
+.viewItaly{
+    padding: 0.5em;
+    float: left;
+    width: 620px;
+    margin: 20px;
+    border-width: 1px;
+    border-color: #d9d9d9;
+    border-style: solid;
+}
+
+#map-view {
+    float: left;
+    width: 1000px;
+    padding: 0.5em;
+    margin-right: 20px;
+    margin-top: 20px;
+}
+
+.legend-element {
+    width: 15px;
+    height: 15px;
+}
+
+.rectlegend {
+    shape-rendering: crispEdges;
+    fill: url(#MyGradient);
+}
+
+.regions {
+    stroke: #f7f7f7;
+}
+
+.selected {
+    fill: #d20a11;
+}
+
+#italy-map {
+    border-width: 1px;
+    border-color: #d9d9d9;
+    border-left-style: solid;
+}
+
+button{
+    height: 30px;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    font-family: 'aller';
+    font-size: large;
+}
+
+h1{
+    margin-top: 0;
+    font-family: 'dusha';
+}
+
+.title {
+    margin-top: 0;
+    font-family: 'dusha';
+    color: #d20a11;
+}
+
+.nb{
+    font-family: 'aller';
+
+}
+
+.invisible{
+    display: none;
+}
+
+.edition {
+    margin-top: 0;
+    font-family: 'dusha';
+    color: #d20a11;
+}
+
+.unselected{
+    stroke: none;
+    stroke-width: 0;
+}
+
+h2 {
+    font-family: 'dusha';
+    padding-bottom: 0px;
+    margin-top: 3px;
+    margin-bottom: 0px;
+}
+
+* {
+    font-family: 'aller';
+}
+
+header {
+    padding: 0.5em;
+    clear: left;
+    text-align: left;
+    height: 100px;
+}
+
+#logo {
+    display: block;
+    margin: auto;
+    width: 40%;
+}
+
+#details {
+    float: left;
+    width: 200px;
+    padding: 0.5em;
+    height: 600px;
+}
+
+#plot-selector {
+    float: right;
+    margin-bottom: 5px;
+
+}
+
+.lines {
+    stroke: #5eadff;
+    fill: none;
+    stroke-width: 3px;
+}
+
+#bar-chart, #bar-chart2, #bar-chart-italy{
+    border-width: 1px;
+    border-color: #d9d9d9;
+    border-style: solid;
+}
+
+#line-chart{
+    border-width: 1px;
+    border-color: #d9d9d9;
+    border-style: solid;
+}
+
+.arc path {
+    stroke: #fff;
+}
+
+#xAxis path,
+#yAxis path {
+    fill: none;
+    stroke: black;
+}
+
+#xAxis text,
+#yAxis text {
+    font-size: 14px;
+}
+
+#legend{
+    font-family: dusha;
+    font-size: 12px;
+    text-anchor: end;
+}
+
+.tooltip {
+    position: absolute;
+    text-align: center;
+    width: 60px;
+    height: 12px;
+    padding: 8px;
+    margin-top: -20px;
+    font: 13px sans-serif;
+    background-color: black;
+    color: white;
+    border-radius: 6px;
+    pointer-events: none;
+    transition: opacity 1s;
+    opacity: 1;
+}

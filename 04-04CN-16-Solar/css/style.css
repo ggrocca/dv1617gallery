@@ -1,0 +1,116 @@
+body {
+  background-color:black;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 12px;
+}
+
+text {
+  font-size: 12px;
+}
+
+svg {
+  text-align: center;
+}
+
+a{
+  color:white !important;
+}
+
+#menu {
+  font-family: 'Open Sans', sans-serif;
+  display: flex;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  position: absolute;
+  left: 150px;
+  height: 50px;
+}
+
+#submenu {
+  font-family: 'Open Sans', sans-serif;
+  display: flex;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  position: absolute;
+  left: 150px;
+  top: 70px;
+  align-items: center;
+}
+
+#menu button {
+    position: relative;
+    background-color: rgba(0,0,0,0);
+    margin-right: 20px;
+    margin-bottom: 5px;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 10px;
+    border: 2px solid orange;
+    color: orange;
+}
+
+#submenu button {
+    position: relative;
+    background-color: rgba(0,0,0,0);
+    margin-right: 10px;
+    margin-bottom: 5px;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    cursor: pointer;
+    border-radius: 10px;
+    border: 2px solid orange;
+    color: orange;
+}
+
+#menu button:hover {
+    background-color: rgba(255,255,255,0.25); /* Green */
+}
+
+.axisWhite line{
+  stroke: white;
+}
+
+.axisWhite path{
+  stroke: white;
+}
+
+.axisWhite text{
+  font-weight: 100;
+  fill: white;
+}
+
+h4 {
+  padding: 0;
+}
+
+@font-face {
+  font-family: 'BTTF';
+  src:  url('BTTF.ttf') format('truetype');
+}
+
+.homeTitle {
+  font-family: 'BTTF';
+}
+
+div.tooltip {
+    position: absolute;
+    text-align: center;
+    font-size: 15px;
+    color: orange;
+    width: 220px;
+    height: 90px;
+    padding: 2px;
+    background: black;
+    border: 2px solid white;
+    border-radius: 8px;
+    pointer-events: none;
+    left: 42%;
+    top: 20%;
+}

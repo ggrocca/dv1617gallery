@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+            <title>Which nation is most convenient to do my job?</title>
+            <meta name="author" content="Matteo Grasso">
+            <meta name="author" content="Nicolò Pinna">
+            <link type="text/css" rel="stylesheet" media="screen" href="styles.css">
+                <script type="text/javascript" src="d3/d3.js"></script>
+                <script type="text/javascript" src="d3/d3-selection-multi.js"></script>
+                <script type="text/javascript" src="d3/topojson.js"></script>
+           <script type="application/javascript" src="script.js?version=1"></script>
+
+            </head>
+    <body onload=DrawMap();>
+        
+        <div id="title">
+            <h1>Which nation is most convenient to do my job?</h1>
+        </div>
+    
+        <div id="selection" >
+            <span class="boxsel">
+                <label>Sex:</label>
+                <select id="Sex">
+                    <option selected value="Total">Total</option>
+                    <option value="Males"> Males</option>
+                    <option value="Females">Females</option>
+                </select>
+            </span>
+            
+            <span class="boxsel">
+                <label>Age:</label>
+                <select id="Age">
+                    <option selected value="Total">Total</option>
+                    <option value="Less than 30 years"> Under 30 </option>
+                    <option value="From 30 to 39 years"> From 30 to 39 </option>
+                    <option value="From 40 to 49 years"> From 40 to 49 </option>
+                    <option value="From 50 to 59 years"> From 50 to 59 </option>
+                    <option value="60 years or over"> Over 60 </option>
+                </select>
+            </span>
+            
+            <span class="boxsel">
+                <label>Activity:</label>
+                <select id="Activity">
+                    <option selected value="Industry, construction and services (except public administration, defense, compulsory social security)">Total (B-S_X_O)</option>
+                    <optgroup label="Business economy">
+                        <option value="Business economy"> Total business economy (B-N)</option>
+                        <option value="Industry and construction"> Industry and construction (B-F)</option>
+                        <option value="Services of the business economy"> Services of the business economy (G-N)</option>
+                    </optgroup>
+                    <option value="Education, human health and social work activities, arts, entertainment and recreation, other service activities"> Education; human health and social work activities; arts, entertainment and recreation; other service activities (P-S)</option>
+                </select>
+            </span>
+            
+            <span class="boxsel">
+                <label>Occupation:</label>
+                <select id="Occupation">
+                    <option selected value="Total">Total</option>
+                    <optgroup label="Non manual workers">
+                        <option value="Non manual workers"> Total non manual workers</option>
+                        <option value="Managers"> Managers </option>
+                        <option value="Professionals"> Professionals</option>
+                        <option value="Technicians and associate professionals"> Technicians and associate professionals</option>
+                        <option value="Clerical support workers"> Clerical support workers</option>
+                        <option value="Service and sales workers"> Service and sales workers</option>
+                    </optgroup>
+                    <optgroup label="Skilled manual workers">
+                        <option value="Skilled manual workers"> Total skilled manual workers</option>
+                        <option value="Skilled agricultural, forestry and fishery workers">Skilled agricultural, forestry and fishery workers</option>
+                        <option value="Craft and related trades workers">Craft and related trades workers</option>
+                        <option value="Plant and machine operators and assemblers">Plant and machine operators and assemblers</option>
+                    </optgroup>
+                    <option value="Elementary occupations">Elementary occupations</option>
+                </select>
+            </span>
+            
+            <span class="boxsel">
+                <label>Year:</label>
+                <select id="Year">
+                    <option value="2002">2002</option>
+                    <option value="2006"> 2006</option>
+                    <option value="2010"> 2010</option>
+                    <option selected value="2014"> 2014 </option>
+                </select>
+            </span>
+            
+            <span class="boxsel">
+                <label>Measure:</label>
+                <select id="Measure">
+                    <option value="euro">Euro</option>
+                    <option selected value="pps"> PPS</option>
+                </select>
+            </span>
+
+
+            <span class="boxsel">
+                <button id="Update" onclick=changeData();>
+                    Update
+                </button>
+            </span>
+            
+        </div>
+        
+        <div id="visualization">
+            
+            <div class="container">
+                <svg id="map_svg" height="700" width="700">
+                    <g id="map"></g>
+                    <g id="legend"></g>
+                </svg>
+                <div id="float-button-group">
+                    <button type="button"  class="zoom_button" id="zoom-out">-</button>
+                    <input type="range" value="1" min="1" max="8" class="zoom_button" id="map-zoomer"/>
+                    <button type="button"  class="zoom_button" id="zoom-in">+</button>
+                    <button type="button"  class="zoom_button" id="resetmap">reset</button>
+                </div>
+            </div>
+            <div class="container">
+                <div id="checkSpan">
+                    <span class="boxsel2">
+                        <input id="searchBar" type="search" placeholder="Search for country" onkeyup="mySearch()"/>
+                    </span>
+                    <span class="checkSel">
+                        <input id="checkSort" type="checkbox" name="Sort" value="Sort" />Sort
+                        <input id="includeMiss" type="checkbox" name="Missing" value="Missing"/>Include Missing
+                    </span>
+                    <span id="color1" class="colorsel"></span>
+                    <span id="sel1" class="name"></span>
+                    <span id="color2" class="colorsel"></span>
+                    <span id="sel2" class="name"></span>
+                    <span id="reset_span" class="name">
+                        <button type="button" id="reset" onclick=resetSel()>reset</button>
+                    </span>
+                </div>
+                
+                <div>
+                    <div id="searchDiv">
+                    </div>
+                    <svg id="barChart" height="340" width="700">
+                        <g class="xAxis"></g>
+                        <g class="yAxis"></g>
+                        <g class="Axis_name"></g>
+                        <g id="bars"></g>
+                    </svg>
+                </div>
+                <div>
+                    <svg id="lineChart" height="330" width="350">
+                        <g class="xAxis"></g>
+                        <g class="yAxis"></g>
+                        <g class="Axis_name"></g>
+                        <g id="line"></g>
+                    </svg>
+                    <svg id="scatter" height="330" width="350">
+                        <g class="xAxis"></g>
+                        <g class="yAxis"></g>
+                        <g class="Axis_name"></g>
+                        <g id="quadrant"></g>
+                        <g id="points"></g>
+                    </svg>
+                </div>
+                
+            </div>
+            
+        </div>
+            
+        
+  </body>
+</html>
+

@@ -1,0 +1,104 @@
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Jobs Act</title>
+        <link rel="stylesheet" href="styles.css?version=1">
+        <script type="text/javascript" src="d3/d3.js"></script>
+        <script type="text/javascript" src="d3/d3-selection-multi.js"></script>
+        <script type="text/javascript" src="d3/topojson.js"></script>
+    </head>
+
+    <body>
+        <header>
+                <h1 class="title">Jobs Act</h1>
+                <div>Names: Cincotta Valentina, Anfigeno Alessandro</div>
+        </header>
+
+        <div id="details" class="view">
+            <h2 id="trasformazioni" class="edition"></h2>
+            <ul>
+                <li>
+                    From fixed-term:
+                    <span id="det_ind"></span>
+                </li>
+                <br>
+                <li>
+                    From training:
+                    <span id="appr_ind"></span>
+                </li>
+                <br>
+                <li>
+                    New hirings:
+                    <span id="nuove_ind"></span>
+                </li>
+            </ul>
+        </div>
+
+        <div id="bar-chart" class="view">
+            <h2 class="title"></h2>
+            <div id="plot-selector">
+                <label>Plot:</label>
+                <select id="dataset" onchange="chooseData(this.options[this.selectedIndex].value)">
+                    <option selected value="lic_ti__ass_ti">TI hirings, TI layoffs</option>
+                    <option value="ass_ti__ass_td">TI hirings, TD hirings</option>
+                    <option value="lic_td__ass_td">TD hirings, TD layoffs</option>
+                    <option value="lic_ti__lic_td">TI layoffs, TD layoffs</option>
+                    <option value="ti_hiring_by_age">TI hirings grouped by age</option>
+                </select>
+            </div>
+
+            <svg width="620" height="500" id="barChart">
+                <g id="xAxis"></g>
+                <g id="yAxis"></g>
+                <g id="bars">
+                    <g id="rects"></g>
+                </g>
+                <g id="legend"></g>
+            </svg>
+        </div>
+
+        <div id="line-chart" class="view">
+            <h2 class="title">Line Chart</h2>
+            <svg width="620" height="527" id="lineChart" >
+                <g id="xAxis"></g>
+                <g id="yAxis"></g>
+                <g id="line" class = "lines"></g>
+            </svg>
+            <text class = "nb"></text>
+        </div>
+
+        <div id="bar-chart2" class="view">
+            <h2 class="title"></h2>
+            <br>
+            <svg width="620" height="500" id="barChart2">
+                <g id="xAxis"></g>
+                <g id="yAxis"></g>
+                <g id="bars">
+                    <g id="rects"></g>
+                </g>
+                <g id="legend"></g>
+            </svg>
+        </div>
+
+        <div id = "pie-chart" class="viewPies">
+            <h2 class="title"></h2>
+            <svg width="290" height="290" id="pieChart" >
+                <g id="pie" ></g>
+                <g id="pieLegend"></g>
+            </svg>
+        </div>
+
+        <div id = "pie-chart2">
+            <h2 class="title"></h2>
+            <svg width="290" height="290" id="pieChart" >
+                <g id="pie" ></g>
+                <g id="pieLegend"></g>
+            </svg>
+        </div>
+        <script type="application/javascript" src="jobs_act.js?version=1"></script>
+        <script type="application/javascript" src="pieChart.js?version=1"></script>
+        <script type="application/javascript" src="lineChart.js?version=1"></script>
+        <script type="application/javascript" src="barChart.js?version=1"></script>
+
+    </body>
+</html>

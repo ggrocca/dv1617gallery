@@ -1,0 +1,9 @@
+Planet,Oxygen,Sodium,Hydrogen,Other gases,Carbon Dioxide,Nitrogen,Argon,Helium,Methane
+Mercury,42,29,22,7,0,0,0,0,0
+Venus,0,0,0,1,96,3,0,0,0
+Earth,21,0,0,1,0,78,0,0,0
+Mars,0,0,0,0.5,95,3,1.5,0,0
+Jupiter,0,0,90,0.5,0,0,0,9.5,0
+Saturn,0,0,96,1,0,0,0,3,0
+Uranus,0,0,83,0,0,0,0,15,2
+Neptune,0,0,80,0,0,0,0,19,1
